@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".GalleryActivity">
+
+    <!-- First image -->
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="152dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/sheep_image" />
+
+    <!-- Second image -->
+
+    <!-- Third image -->
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="170dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/beer_image" />
+
+    <!-- Button -->
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="match_parent"
+        android:layout_height="138dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/tree_image" />
+
+    <Button
+        android:id="@+id/addPhotoButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/addPhoto" />
+</LinearLayout>
