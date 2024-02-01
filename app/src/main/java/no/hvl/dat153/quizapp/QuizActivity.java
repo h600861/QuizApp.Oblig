@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +21,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private List<Integer> imageList;
     private int currentImageIndex;
-    private int remainingAttempts;
+    private int score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +39,8 @@ public class QuizActivity extends AppCompatActivity {
         imageList.add(R.drawable.tree_image);
 
         currentImageIndex = 0;
-        remainingAttempts = 3;
+        score = 0;
+        updateScore();
         loadCurrentImage();
     }
 
@@ -49,8 +51,8 @@ public class QuizActivity extends AppCompatActivity {
         List<Button> optionButtons = Arrays.asList(option1Button, option2Button, option3Button);
         Collections.shuffle(optionButtons);
 
-        String correctAnswer = getResourceName(currentImageResource);
-        List<Answers> randomizedAnswers = Dictionary.getRandomizedAnswers(optionButtons.size() - 1);
+        String correctAnswer = getCustomAnswer(); // Endre denne metoden for å gi et tilpasset svar
+        List<Answers> incorrectAnswers = Dictionary.getRandomizedAnswers(optionButtons.size() - 1);
 
         // Sett tekstbeskrivelser for bildet
         for (int i = 0; i < optionButtons.size(); i++) {
@@ -58,50 +60,73 @@ public class QuizActivity extends AppCompatActivity {
                 optionButtons.get(i).setText(correctAnswer);
                 optionButtons.get(i).setTag(correctAnswer);
             } else {
-                optionButtons.get(i).setText(randomizedAnswers.get(i - 1).getName());
-                optionButtons.get(i).setTag(randomizedAnswers.get(i - 1).getName());
+                optionButtons.get(i).setText(incorrectAnswers.get(i - 1).getName());
+                optionButtons.get(i).setTag(incorrectAnswers.get(i - 1).getName());
             }
         }
     }
 
 
-    private String getResourceName(int imageResource) {
-        return getResources().getResourceEntryName(imageResource);
+    private String getCustomAnswer() {
+        // Legg til tilpassede navn for hvert bilde
+        switch (currentImageIndex) {
+            case 0:
+                return "Sau";
+            case 1:
+                return "Øl";
+            case 2:
+                return "Tre";
+            // Legg til flere cases etter behov for flere bilder
+            default:
+                return "Standard svar";
+        }
+    }
+
+
+    private List<String> getRandomizedAnswers(String correctAnswer) {
+        // Lag en liste med alle mulige svaralternativer inkludert det riktige svaret
+        List<String> allAnswers = new ArrayList<>();
+        allAnswers.add(correctAnswer);
+        allAnswers.add("Feil svar 1");
+        allAnswers.add("Feil svar 2");
+
+        // Bland svaralternativene for å gjøre rekkefølgen tilfeldig
+        Collections.shuffle(allAnswers);
+
+        return allAnswers;
     }
 
     public void checkAnswer(View view) {
         Button clickedButton = (Button) view;
+        String selectedAnswer = clickedButton.getTag().toString();
 
-        String correctAnswer = getResourceName(imageList.get(currentImageIndex));
+        String correctAnswer = getCustomAnswer(); // Endre denne metoden for å gi det riktige svaret basert på bildet
 
-        if (clickedButton.getTag().equals(correctAnswer)) {
+        if (selectedAnswer.equals(correctAnswer)) {
             Toast.makeText(this, "Riktig svar!", Toast.LENGTH_SHORT).show();
-
-            if (currentImageIndex < imageList.size() - 1) {
-                currentImageIndex++;
-                remainingAttempts = 3;
-                loadCurrentImage();
-            } else {
-                Toast.makeText(this, "Gratulerer, du har fullført quizen!", Toast.LENGTH_SHORT).show();
-                finish();
-            }
+            score++; // Øk poengsummen for hvert riktige svar
         } else {
-            remainingAttempts--;
-
-            if (remainingAttempts > 0) {
-                Toast.makeText(this, "Feil svar. Du har " + remainingAttempts + " forsøk igjen.", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(this, "Feil svar. Du har brukt opp alle forsøk. Prøv neste bilde.", Toast.LENGTH_SHORT).show();
-
-                if (currentImageIndex < imageList.size() - 1) {
-                    currentImageIndex++;
-                    remainingAttempts = 3;
-                    loadCurrentImage();
-                } else {
-                    Toast.makeText(this, "Gratulerer, du har fullført quizen!", Toast.LENGTH_SHORT).show();
-                    finish();
-                }
-            }
+            Toast.makeText(this, "Feil svar. Riktig svar er: " + correctAnswer, Toast.LENGTH_SHORT).show();
         }
+
+        updateScore();
+        if (currentImageIndex < imageList.size() - 1) {
+            currentImageIndex++;
+            loadCurrentImage();
+        } else {
+            showQuizResult();
+        }
+    }
+
+    private void updateScore() {
+        TextView scoreTextView = findViewById(R.id.scoreTextView);
+        if (scoreTextView != null) {
+            scoreTextView.setText("Poengsum: " + score + "/" + imageList.size());
+        }
+    }
+
+    private void showQuizResult() {
+        Toast.makeText(this, "Gratulerer, du har fullført quizen!\nPoengsum: " + score + "/" + imageList.size(), Toast.LENGTH_LONG).show();
+        finish();
     }
 }

@@ -11,9 +11,11 @@ public class Dictionary {
             new Answers("Hund"),
             new Answers("Sjiraff"),
             new Answers("Blomst"),
-            new Answers("Brus")
-            // Legg til flere svar etter behov
-    );
+            new Answers("Brus"),
+            new Answers("Troll"),
+            new Answers("Menneske"),
+            new Answers("Telefon")
+            );
 
     public static List<Answers> getRandomizedAnswers(int count) {
         List<Answers> randomizedAnswers = new ArrayList<>(answerList);
