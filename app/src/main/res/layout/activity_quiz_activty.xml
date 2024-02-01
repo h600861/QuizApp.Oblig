@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuizActivity">
+
+    <ImageView
+        android:id="@+id/questionImage"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/sheep_image"
+        android:scaleType="centerCrop"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/option1Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Option 1"
+        android:layout_below="@id/questionImage"
+        android:layout_marginTop="16dp"
+        android:onClick="checkAnswer"/>
+
+    <Button
+        android:id="@+id/option2Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Option 2"
+        android:layout_below="@id/option1Button"
+        android:layout_marginTop="8dp"
+        android:onClick="checkAnswer"/>
+
+    <Button
+        android:id="@+id/option3Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Option 3"
+        android:layout_below="@id/option2Button"
+        android:layout_marginTop="8dp"
+        android:onClick="checkAnswer"/>
+</RelativeLayout>

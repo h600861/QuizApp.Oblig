@@ -4,4 +4,5 @@
     <string name="gallerybutton"> Galleriet</string>
     <string name="quiz_app">Quiz appen</string>
     <string name="addPhoto">Legg til et bilde</string>
+    <string name="quizbutton">Quiz</string>
 </resources>
