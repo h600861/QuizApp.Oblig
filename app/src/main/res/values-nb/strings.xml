@@ -5,4 +5,10 @@
     <string name="quiz_app">Quiz appen</string>
     <string name="addPhoto">Legg til et bilde</string>
     <string name="quizbutton">Quiz</string>
+    <string name="choose_image">Velg bilde</string>
+    <string name="enter_text_here">Skriv inn tekst</string>
+    <string name="save">Lagre</string>
+    <string name="sheep">Sau</string>
+    <string name="beer">Øl</string>
+    <string name="tree">Tre</string>
 </resources>

@@ -4,4 +4,10 @@
     <string name="quiz_app">Quiz app</string>
     <string name="addPhoto">Add a photo</string>
     <string name="quizbutton">Quiz</string>
+    <string name="choose_image">Choose image</string>
+    <string name="enter_text_here">Enter text here</string>
+    <string name="save">Save</string>
+    <string name="sheep">Sheep</string>
+    <string name="beer">Beer</string>
+    <string name="tree">Tree</string>
 </resources>

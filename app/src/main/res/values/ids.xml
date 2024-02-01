@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="galleryButton" type="id" />
+    <item name="galleryImageView" type="id" />
+    <item name="galleryTextView" type="id" />
 </resources>
