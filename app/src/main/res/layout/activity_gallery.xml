@@ -16,9 +16,6 @@
         android:src="@drawable/sheep_image" />
 
     <!-- Second image -->
-
-    <!-- Third image -->
-
     <ImageView
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
@@ -26,7 +23,7 @@
         android:scaleType="fitStart"
         android:src="@drawable/beer_image" />
 
-    <!-- Button -->
+    <!-- Third image -->
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="match_parent"
@@ -34,6 +31,7 @@
         android:scaleType="fitStart"
         android:src="@drawable/tree_image" />
 
+    <!-- Button -->
     <Button
         android:id="@+id/addPhotoButton"
         android:layout_width="match_parent"
