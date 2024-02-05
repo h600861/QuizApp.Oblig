@@ -51,10 +51,9 @@ public class QuizActivity extends AppCompatActivity {
         List<Button> optionButtons = Arrays.asList(option1Button, option2Button, option3Button);
         Collections.shuffle(optionButtons);
 
-        String correctAnswer = getCustomAnswer(); // Endre denne metoden for å gi et tilpasset svar
+        String correctAnswer = getCustomAnswer();
         List<Answers> incorrectAnswers = Dictionary.getRandomizedAnswers(optionButtons.size() - 1);
 
-        // Sett tekstbeskrivelser for bildet
         for (int i = 0; i < optionButtons.size(); i++) {
             if (i == 0) {
                 optionButtons.get(i).setText(correctAnswer);
@@ -68,7 +67,6 @@ public class QuizActivity extends AppCompatActivity {
 
 
     private String getCustomAnswer() {
-        // Legg til tilpassede navn for hvert bilde
         switch (currentImageIndex) {
             case 0:
                 return "Sau";
@@ -76,7 +74,6 @@ public class QuizActivity extends AppCompatActivity {
                 return "Øl";
             case 2:
                 return "Tre";
-            // Legg til flere cases etter behov for flere bilder
             default:
                 return "Standard svar";
         }
@@ -84,13 +81,11 @@ public class QuizActivity extends AppCompatActivity {
 
 
     private List<String> getRandomizedAnswers(String correctAnswer) {
-        // Lag en liste med alle mulige svaralternativer inkludert det riktige svaret
         List<String> allAnswers = new ArrayList<>();
         allAnswers.add(correctAnswer);
         allAnswers.add("Feil svar 1");
         allAnswers.add("Feil svar 2");
 
-        // Bland svaralternativene for å gjøre rekkefølgen tilfeldig
         Collections.shuffle(allAnswers);
 
         return allAnswers;
@@ -100,11 +95,11 @@ public class QuizActivity extends AppCompatActivity {
         Button clickedButton = (Button) view;
         String selectedAnswer = clickedButton.getTag().toString();
 
-        String correctAnswer = getCustomAnswer(); // Endre denne metoden for å gi det riktige svaret basert på bildet
+        String correctAnswer = getCustomAnswer();
 
         if (selectedAnswer.equals(correctAnswer)) {
             Toast.makeText(this, "Riktig svar!", Toast.LENGTH_SHORT).show();
-            score++; // Øk poengsummen for hvert riktige svar
+            score++;
         } else {
             Toast.makeText(this, "Feil svar. Riktig svar er: " + correctAnswer, Toast.LENGTH_SHORT).show();
         }

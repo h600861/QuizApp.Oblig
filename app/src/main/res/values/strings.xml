@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">QuizApp</string>
-    <string name="gallerybutton">gallery</string>
+    <string name="gallerybutton">Gallery</string>
     <string name="quiz_app">Quiz app</string>
     <string name="addPhoto">Add a photo</string>
     <string name="quizbutton">Quiz</string>
@@ -10,4 +10,7 @@
     <string name="sheep">Sheep</string>
     <string name="beer">Beer</string>
     <string name="tree">Tree</string>
+    <string name="add_photo">Add Photo</string>
+    <string name="sort_aToz">Sort A-Z</string>
+    <string name="sort_zToa">Sort Z-A</string>
 </resources>

@@ -1,100 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<!-- activity_gallery.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".GalleryActivity">
 
-    <!-- Inserted image -->
-    <ImageView
-        android:id="@+id/galleryImageView"
-        android:layout_width="171dp"
-        android:layout_height="128dp"
-        android:scaleType="centerInside"
-        tools:layout_editor_absoluteX="120dp"
-        tools:layout_editor_absoluteY="81dp" />
-
-    <!-- Corresponding text -->
-    <TextView
-        android:id="@+id/galleryTextView"
-        android:layout_width="174dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text=""
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/galleryImageView" />
-
-
-    <!-- First image -->
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="171dp"
-        android:layout_height="114dp"
-        android:scaleType="fitStart"
-        android:src="@drawable/sheep_image" />
-
-    <!-- Corresponding text -->
-    <TextView
-        android:id="@+id/galleryTextView1"
-        android:layout_width="174dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/sheep"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/galleryImageView1" />
-
-    <!-- Second image -->
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="171dp"
-        android:layout_height="120dp"
-        android:scaleType="fitStart"
-        android:src="@drawable/beer_image" />
-
-    <!-- Corresponding text -->
-    <TextView
-        android:id="@+id/galleryTextView2"
-        android:layout_width="174dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/beer"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/galleryImageView2" />
-
-    <!-- Third image -->
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="171dp"
-        android:layout_height="138dp"
-        android:scaleType="fitStart"
-        android:src="@drawable/tree_image" />
-    <TextView
-        android:id="@+id/galleryTextView3"
-        android:layout_width="174dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/tree"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/galleryImageView3" />
-
-    <!-- Corresponding text -->
-
-    <!-- Button -->
-    <Button
-        android:id="@+id/addPhotoButton"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="@string/addPhoto" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:padding="16dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="bottom">
+
+        <Button
+            android:id="@+id/sortButtonAToZ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sort_aToz" />
+
+        <Button
+            android:id="@+id/sortButtonZToA"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sort_zToa" />
+
+        <Button
+            android:id="@+id/addPhotoButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/add_photo" />
+    </LinearLayout>
+
+
+</RelativeLayout>

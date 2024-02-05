@@ -11,4 +11,7 @@
     <string name="sheep">Sau</string>
     <string name="beer">Øl</string>
     <string name="tree">Tre</string>
+    <string name="add_photo">Legg til et bilde</string>
+    <string name="sort_aToz">Sorter A-Z</string>
+    <string name="sort_zToa">Sorter Z-A</string>
 </resources>

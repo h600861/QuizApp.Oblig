@@ -3,4 +3,5 @@
     <item name="galleryButton" type="id" />
     <item name="galleryImageView" type="id" />
     <item name="galleryTextView" type="id" />
+    <item name="recyclerView" type="id" />
 </resources>
