@@ -41,7 +41,9 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         GalleryItem galleryItem = galleryItemList.get(position);
 
-        holder.imageView.setImageResource(galleryItem.getImageResource());
+        if(galleryItem.getItemType() == GalleryItem.ItemType.RESOURCE_ID) {
+            holder.imageView.setImageResource(galleryItem.getImageResource());
+        } else holder.imageView.setImageBitmap(galleryItem.getImageBitmap());
         holder.textView.setText(galleryItem.getDescription());
     }
 
@@ -100,4 +102,3 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
         notifyDataSetChanged();
     }
 }
-

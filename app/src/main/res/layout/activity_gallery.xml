@@ -1,41 +1,41 @@
-<!-- activity_gallery.xml -->
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".GalleryActivity">
 
+    <!-- RecyclerView to display gallery items -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:padding="8dp" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="16dp" />
 
-    <LinearLayout
+
+    <Button
+        android:id="@+id/sortButtonAToZ"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="bottom">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/sort_aToz" />
 
-        <Button
-            android:id="@+id/sortButtonAToZ"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/sort_aToz" />
+    <Button
+        android:id="@+id/sortButtonZToA"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/sort_zToa" />
+    <!-- Button to add a photo -->
+    <Button
+        android:id="@+id/addPhotoButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/addPhoto" />
 
-        <Button
-            android:id="@+id/sortButtonZToA"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/sort_zToa" />
-
-        <Button
-            android:id="@+id/addPhotoButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/add_photo" />
-    </LinearLayout>
-
-
-</RelativeLayout>
+</LinearLayout>
