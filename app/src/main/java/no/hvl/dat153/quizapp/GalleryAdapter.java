@@ -15,8 +15,16 @@ import java.util.List;
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHolder> {
 
     private List<GalleryItem> galleryItemList;
-
     private boolean isAscendingOrder = true;
+    private OnItemClickListener onItemClickListener;
+
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.onItemClickListener = listener;
+    }
 
     public GalleryAdapter(List<GalleryItem> galleryItemList) {
         this.galleryItemList = galleryItemList;
@@ -33,8 +41,8 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         GalleryItem galleryItem = galleryItemList.get(position);
 
-        holder.galleryImageView.setImageResource(galleryItem.getImageResource());
-        holder.galleryTextView.setText(galleryItem.getDescription());
+        holder.imageView.setImageResource(galleryItem.getImageResource());
+        holder.textView.setText(galleryItem.getDescription());
     }
 
     @Override
@@ -42,14 +50,28 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
         return galleryItemList.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView galleryImageView;
-        TextView galleryTextView;
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ViewHolder(@NonNull View itemView) {
+        public ImageView imageView;
+        public TextView textView;
+
+        public ViewHolder(View itemView) {
             super(itemView);
-            galleryImageView = itemView.findViewById(R.id.galleryImageView);
-            galleryTextView = itemView.findViewById(R.id.galleryTextView);
+
+            imageView = itemView.findViewById(R.id.galleryImageView);
+            textView = itemView.findViewById(R.id.galleryTextView);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (onItemClickListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            onItemClickListener.onItemClick(position);
+                        }
+                    }
+                }
+            });
         }
     }
     public void sortByAlphabet() {
@@ -76,12 +98,6 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.ViewHold
         });
 
         notifyDataSetChanged();
-    }
-
-    // Metode for å bytte mellom A-Z og Z-A
-    public void toggleSortOrder() {
-        isAscendingOrder = !isAscendingOrder;
-        sortByAlphabet();
     }
 }
 

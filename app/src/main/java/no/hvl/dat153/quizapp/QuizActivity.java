@@ -18,7 +18,7 @@ public class QuizActivity extends AppCompatActivity {
 
     private ImageView questionImage;
     private Button option1Button, option2Button, option3Button;
-
+    private Button exitQuizButton;
     private List<Integer> imageList;
     private int currentImageIndex;
     private int score;
@@ -42,6 +42,14 @@ public class QuizActivity extends AppCompatActivity {
         score = 0;
         updateScore();
         loadCurrentImage();
+
+        exitQuizButton = findViewById(R.id.exitQuizButton);
+        exitQuizButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finishQuiz();
+            }
+        });
     }
 
     private void loadCurrentImage() {
@@ -109,7 +117,9 @@ public class QuizActivity extends AppCompatActivity {
             currentImageIndex++;
             loadCurrentImage();
         } else {
-            showQuizResult();
+            //showQuizResult();
+            currentImageIndex = 0;
+            loadCurrentImage();
         }
     }
 
@@ -122,6 +132,11 @@ public class QuizActivity extends AppCompatActivity {
 
     private void showQuizResult() {
         Toast.makeText(this, "Gratulerer, du har fullført quizen!\nPoengsum: " + score + "/" + imageList.size(), Toast.LENGTH_LONG).show();
+        finish();
+    }
+
+    private void finishQuiz() {
+        Toast.makeText(this, "Quiz avsluttet!\nPoengsum: " + score + "/" + imageList.size(), Toast.LENGTH_LONG).show();
         finish();
     }
 }
